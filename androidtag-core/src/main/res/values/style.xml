@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AndroidTag">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="tagTitleText">@string/default_title</item>
+        <item name="tagTitleTextSize">@dimen/titleTextSize</item>
+        <item name="tagTitleColor">@color/titleColor</item>
+        <item name="tagBorderPaddingTop">@dimen/borderPaddingTop</item>
+        <item name="tagBorderPaddingLeft">@dimen/borderPaddingLeft</item>
+        <item name="tagBorderPaddingBottom">@dimen/borderPaddingBottom</item>
+        <item name="tagBorderPaddingRight">@dimen/borderPaddingRight</item>
+        <item name="tagBorderRadius">@dimen/borderRadius</item>
+        <item name="tagBackgroundColor">@color/backgroundColor</item>
+        <item name="tagBorderWidth">@dimen/tagBorderWidth</item>
+        <item name="tagBorderColor">@color/borderColor</item>
+        <item name="tagBorderType">round</item>
+        <item name="tagOnClickTitleText">@string/default_title</item>
+        <item name="tagOnClickTitleColor">@color/titleColor</item>
+        <item name="tagOnClickBackgroundColor">@color/onClickBackgroundColor</item>
+        <item name="tagOnClickBorderWidth">@dimen/tagBorderWidth</item>
+        <item name="tagOnClickBorderColor">@color/borderColor</item>
+        <item name="tagSelectedTitleText">@string/default_title</item>
+        <item name="tagSelectedTitleColor">@color/onSelectTitleColor</item>
+        <item name="tagSelectedBackgroundColor">@color/onClickBackgroundColor</item>
+        <item name="tagSelectedBorderWidth">@dimen/tagBorderWidth</item>
+        <item name="tagSelectedBorderColor">@color/borderColor</item>
+        <item name="tagIsSelected">false</item>
+        <item name="tagType">normal</item>
+    </style>
+
+</resources>

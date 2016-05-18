@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="titleTextSize">13sp</dimen>
+    <dimen name="tagBorderWidth">0.5dp</dimen>
+    <dimen name="borderPaddingTop">10dp</dimen>
+    <dimen name="borderPaddingLeft">10dp</dimen>
+    <dimen name="borderPaddingBottom">10dp</dimen>
+    <dimen name="borderPaddingRight">10dp</dimen>
+    <dimen name="borderRadius">10dp</dimen>
+</resources>

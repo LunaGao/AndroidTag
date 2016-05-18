@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="titleColor">#49C120</color>
+    <color name="backgroundColor">#FFFFFF</color>
+    <color name="borderColor">#AAAAAA</color>
+    <color name="onClickBackgroundColor">#EDEDED</color>
+    <color name="onSelectTitleColor">#FFFFFF</color>
+    <color name="onSelectBackgroundColor">#49C120</color>
+
+</resources>

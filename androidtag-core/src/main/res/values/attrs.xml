@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="AndroidTag">
+        <attr name="tagTitleText" format="string" />
+        <attr name="tagTitleTextSize" format="dimension" />
+        <attr name="tagTitleColor" format="color" />
+        <attr name="tagBorderRadius" format="dimension" />
+        <attr name="tagBorderPaddingTop" format="dimension" />
+        <attr name="tagBorderPaddingLeft" format="dimension" />
+        <attr name="tagBorderPaddingBottom" format="dimension" />
+        <attr name="tagBorderPaddingRight" format="dimension" />
+        <attr name="tagBackgroundColor" format="color" />
+        <attr name="tagBorderWidth" format="dimension" />
+        <attr name="tagBorderColor" format="color" />
+        <attr name="tagBorderType" format="enum">
+            <enum name="round" value="0"/>
+            <enum name="square" value="1"/>
+        </attr>
+        <attr name="tagOnClickTitleText" format="string" />
+        <attr name="tagOnClickTitleColor" format="color" />
+        <attr name="tagOnClickBackgroundColor" format="color" />
+        <attr name="tagOnClickBorderWidth" format="dimension" />
+        <attr name="tagOnClickBorderColor" format="color" />
+        <attr name="tagSelectedTitleText" format="string" />
+        <attr name="tagSelectedTitleColor" format="color" />
+        <attr name="tagSelectedBackgroundColor" format="color" />
+        <attr name="tagSelectedBorderWidth" format="dimension" />
+        <attr name="tagSelectedBorderColor" format="color" />
+        <attr name="tagIsSelected" format="boolean" />
+        <attr name="tagType" format="enum">
+            <enum name="selected" value="1"/>
+            <enum name="normal" value="0"/>
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="Themes">
+        <attr name="tagStyle" format="reference" />
+    </declare-styleable>
+
+</resources>
