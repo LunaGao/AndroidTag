@@ -6,13 +6,15 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.RectF;
+import android.support.v4.view.MotionEventCompat;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.view.View;
 
 /**
  * Created by lunagao on 16/5/17.
  */
-public class AndroidTag extends View {
+public class AndroidTag extends View implements View.OnTouchListener{
 
     /**
      * 文本
@@ -48,6 +50,12 @@ public class AndroidTag extends View {
     private boolean tagIsSelected;
     private int tagType;
 
+    private String currentTitleString;
+    private int currentTitleColor;
+    private int currentBorderColor;
+    private int currentBorderWidth;
+    private int currentBackgroundColor;
+
     /**
      * 绘制时控制文本绘制的范围
      */
@@ -65,7 +73,7 @@ public class AndroidTag extends View {
     }
 
     /**
-     * 获得我自定义的样式属性
+     * 获得样式属性
      *
      * @param context
      * @param attrs
@@ -77,7 +85,6 @@ public class AndroidTag extends View {
         /**
          * 获得我们所定义的自定义样式属性
          */
-        // Load styled attributes.
         final TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.AndroidTag, defStyle, R.style.AndroidTag);
         try {
             tagTitleText = a.getString(R.styleable.AndroidTag_tagTitleText);
@@ -108,17 +115,81 @@ public class AndroidTag extends View {
             a.recycle();
         }
 
+        this.setClickable(true);
         /**
          * 获得绘制文本的宽和高
          */
         mPaint = new Paint();
         mBound = new Rect();
+
+        currentTitleString = tagTitleText;
+        currentTitleColor = tagTitleColor;
+        currentBackgroundColor = tagBackgroundColor;
+        currentBorderColor = tagBorderColor;
+        currentBorderWidth = tagBorderWidth;
+
+        // 设置圆角或直角
+        if (tagBorderType == 1) {
+            tagBorderRadius = 0;
+        }
+        // 设置是否为选中状态
+        if (tagIsSelected) {
+            currentTitleString = tagTitleText;
+            currentTitleString = tagSelectedTitleText == null ? tagTitleText : tagSelectedTitleText;
+        }
+        if (tagOnClickTitleText == null) {
+            tagOnClickTitleText = currentTitleString;
+        }
+        if (tagSelectedTitleText == null) {
+            tagSelectedTitleText = currentTitleString;
+        }
+        // 设置点击事件
+        this.setOnTouchListener(this);
+    }
+
+    public Boolean isTagSelected() {
+        return tagIsSelected;
+    }
+
+    public void setTagSelected(Boolean selected) {
+        tagIsSelected = selected;
+        postInvalidate();
     }
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec)
     {
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        int widthMode = MeasureSpec.getMode(widthMeasureSpec);
+        int widthSize = MeasureSpec.getSize(widthMeasureSpec);
+        int heightMode = MeasureSpec.getMode(heightMeasureSpec);
+        int heightSize = MeasureSpec.getSize(heightMeasureSpec);
+        int width;
+        int height;
+        if (widthMode == MeasureSpec.EXACTLY)
+        {
+            width = widthSize;
+        } else
+        {
+            mPaint.setTextSize(tagTitleTextSize);
+            mPaint.getTextBounds(currentTitleString, 0, currentTitleString.length(), mBound);
+            float textWidth = mBound.width();
+            int desired = (int) (getPaddingLeft() + textWidth + getPaddingRight() + 2 + tagBorderPaddingRight + tagBorderPaddingLeft);
+            width = desired;
+        }
+
+        if (heightMode == MeasureSpec.EXACTLY)
+        {
+            height = heightSize;
+        } else
+        {
+            mPaint.setTextSize(tagTitleTextSize);
+            mPaint.getTextBounds(currentTitleString, 0, currentTitleString.length(), mBound);
+            float textHeight = mBound.height();
+            int desired = (int) (getPaddingTop() + textHeight + getPaddingBottom() + 2 + tagBorderPaddingTop + tagBorderPaddingBottom);
+            height = desired;
+        }
+
+        setMeasuredDimension(width, height);
     }
 
     @Override
@@ -130,42 +201,78 @@ public class AndroidTag extends View {
          * 获得绘制文本的宽和高
          */
         mPaint.setTextSize(tagTitleTextSize);
-        mPaint.getTextBounds(tagTitleText, 0, tagTitleText.length(), mBound);
+        mPaint.getTextBounds(currentTitleString, 0, currentTitleString.length(), mBound);
 
-        setBackground(canvas, tagBackgroundColor);
-        setBorderColor(canvas, tagBorderColor);
-        setTitle(canvas, tagTitleColor, tagTitleText);
-//        mPaint.setColor(Color.YELLOW);
-//        canvas.drawRect(0, 0, getMeasuredWidth(), getMeasuredHeight(), mPaint);
-
-//        mPaint.setColor(tagTitleColor);
-//        canvas.drawText(tagTitleText, getWidth() / 2 - mBound.width() / 2, getHeight() / 2 + mBound.height() / 2, mPaint);
+        // 绘制背景
+        setBackground(canvas);
+        // 绘制border
+        setBorderColor(canvas);
+        // 绘制文字
+        setTitle(canvas);
     }
 
-    private void setBackground(Canvas canvas, int color) {
-        drawBackgroundRoundRect(Paint.Style.FILL, canvas, color);
+    private void setBackground(Canvas canvas) {
+        drawBackgroundRoundRect(Paint.Style.FILL, canvas, currentBackgroundColor);
     }
 
-    private void setBorderColor(Canvas canvas, int color) {
-        drawBackgroundRoundRect(Paint.Style.STROKE, canvas, color);
+    private void setBorderColor(Canvas canvas) {
+        drawBackgroundRoundRect(Paint.Style.STROKE, canvas, currentBorderColor);
     }
 
-    private void setTitle(Canvas canvas, int color, String titleString) {
+    private void setTitle(Canvas canvas) {
+        mPaint.reset();
+        mPaint.setTextSize(tagTitleTextSize);
         mPaint.setStyle(Paint.Style.FILL);
-        mPaint.setColor(color);
-        canvas.drawText(titleString, tagBorderPaddingTop, tagBorderPaddingLeft + mBound.height(), mPaint);
+        mPaint.setColor(currentTitleColor);
+        canvas.drawText(currentTitleString, tagBorderPaddingLeft, tagBorderPaddingTop + mBound.height(), mPaint);
     }
 
     private void drawBackgroundRoundRect(Paint.Style style, Canvas canvas, int color) {
+        mPaint.reset();
         mPaint.setColor(color);
-        mPaint.setStrokeWidth(tagBorderWidth);
+        mPaint.setStrokeWidth(currentBorderWidth);
         mPaint.setStyle(style);
-        //新建矩形r2
         RectF rectF = new RectF();
         rectF.left = 1;
         rectF.right = 1 + mBound.width() + tagBorderPaddingRight + tagBorderPaddingLeft;
         rectF.top = 1 ;
         rectF.bottom = 1 + mBound.height() + tagBorderPaddingTop + tagBorderPaddingBottom;
         canvas.drawRoundRect(rectF, tagBorderRadius, tagBorderRadius, mPaint);
+    }
+
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+        final int action = MotionEventCompat.getActionMasked(event);
+        switch (action) {
+            case MotionEvent.ACTION_DOWN:
+                currentTitleString = tagOnClickTitleText;
+                currentTitleColor = tagOnClickTitleColor;
+                currentBackgroundColor = tagOnClickBackgroundColor;
+                currentBorderColor = tagOnClickBorderColor;
+                currentBorderWidth = tagOnClickBorderWidth;
+                break;
+            case MotionEvent.ACTION_UP:
+                currentTitleString = tagTitleText;
+                currentTitleColor = tagTitleColor;
+                currentBackgroundColor = tagBackgroundColor;
+                currentBorderColor = tagBorderColor;
+                currentBorderWidth = tagBorderWidth;
+                int[] location = new int[2];
+                this.getLocationOnScreen(location);
+                if (event.getX() >= 0 && event.getX() <= this.getMeasuredWidth()
+                        && event.getY() >= 0 && event.getY() <= this.getMeasuredHeight()) {
+                    tagIsSelected = !tagIsSelected;
+                }
+                if (tagIsSelected) {
+                    currentTitleString = tagSelectedTitleText;
+                    currentTitleColor = tagSelectedTitleColor;
+                    currentBackgroundColor = tagSelectedBackgroundColor;
+                    currentBorderColor = tagSelectedBorderColor;
+                    currentBorderWidth = tagSelectedBorderWidth;
+                }
+                break;
+        }
+        postInvalidate();
+        return false;
     }
 }

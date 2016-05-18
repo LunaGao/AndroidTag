@@ -16,12 +16,10 @@
         <item name="tagBorderWidth">@dimen/tagBorderWidth</item>
         <item name="tagBorderColor">@color/borderColor</item>
         <item name="tagBorderType">round</item>
-        <item name="tagOnClickTitleText">@string/default_title</item>
         <item name="tagOnClickTitleColor">@color/titleColor</item>
         <item name="tagOnClickBackgroundColor">@color/onClickBackgroundColor</item>
         <item name="tagOnClickBorderWidth">@dimen/tagBorderWidth</item>
         <item name="tagOnClickBorderColor">@color/borderColor</item>
-        <item name="tagSelectedTitleText">@string/default_title</item>
         <item name="tagSelectedTitleColor">@color/onSelectTitleColor</item>
         <item name="tagSelectedBackgroundColor">@color/onClickBackgroundColor</item>
         <item name="tagSelectedBorderWidth">@dimen/tagBorderWidth</item>

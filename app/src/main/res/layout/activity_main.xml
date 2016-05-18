@@ -10,12 +10,53 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.luna.gao.androidtag.MainActivity">
 
-    <com.luna.gao.androidtag_core.AndroidTag
-        android:layout_width="200dp"
-        android:layout_height="100dp"
-        tag:tagType="selected"
-        tag:tagTitleText="3712"
-        tag:tagBorderColor="#232323"
-        tag:tagTitleTextSize="13sp" />
+    <com.google.android.flexbox.FlexboxLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:flexWrap="wrap" >
+
+        <com.luna.gao.androidtag_core.AndroidTag
+            android:padding="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tag:tagBorderType="round"
+            tag:tagType="selected"
+            tag:tagTitleText="坑爹啊"
+            tag:tagBorderColor="#000000"
+            tag:tagTitleTextSize="13sp" />
+
+        <com.luna.gao.androidtag_core.AndroidTag
+            android:padding="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tag:tagBorderType="round"
+            tag:tagType="selected"
+            tag:tagTitleText="坑"
+            tag:tagBorderColor="#000000"
+            tag:tagTitleTextSize="13sp" />
+
+        <com.luna.gao.androidtag_core.AndroidTag
+            android:padding="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tag:tagBorderType="round"
+            tag:tagType="selected"
+            tag:tagTitleText="坑爹啊1111"
+            tag:tagBorderColor="#000000"
+            tag:tagTitleTextSize="13sp" />
+
+        <com.luna.gao.androidtag_core.AndroidTag
+            android:padding="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tag:tagBorderType="round"
+            tag:tagType="selected"
+            tag:tagTitleText="坑爹啊1212121212"
+            tag:tagBorderColor="#000000"
+            tag:tagTitleTextSize="13sp" />
+
+    </com.google.android.flexbox.FlexboxLayout>
 
 </RelativeLayout>
