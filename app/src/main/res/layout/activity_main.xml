@@ -18,6 +18,7 @@
         app:flexWrap="wrap" >
 
         <com.luna.gao.androidtag_core.AndroidTag
+            android:id="@+id/tag_1"
             android:padding="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
