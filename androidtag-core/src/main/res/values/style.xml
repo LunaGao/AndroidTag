@@ -25,7 +25,7 @@
         <item name="tagSelectedBorderWidth">@dimen/tagBorderWidth</item>
         <item name="tagSelectedBorderColor">@color/borderColor</item>
         <item name="tagIsSelected">false</item>
-        <item name="tagType">normal</item>
+        <item name="tagType">selected</item>
     </style>
 
 </resources>

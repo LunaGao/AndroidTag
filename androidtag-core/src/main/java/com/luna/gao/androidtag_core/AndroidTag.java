@@ -16,17 +16,8 @@ import android.view.View;
  */
 public class AndroidTag extends View implements View.OnTouchListener{
 
-    /**
-     * 文本
-     */
     private String tagTitleText;
-    /**
-     * 文本的颜色
-     */
     private int tagTitleTextSize;
-    /**
-     * 文本的大小
-     */
     private int tagTitleColor;
     private int tagBackgroundColor;
     private int tagBorderWidth;
@@ -147,15 +138,6 @@ public class AndroidTag extends View implements View.OnTouchListener{
         this.setOnTouchListener(this);
     }
 
-    public Boolean isTagSelected() {
-        return tagIsSelected;
-    }
-
-    public void setTagSelected(Boolean selected) {
-        tagIsSelected = selected;
-        postInvalidate();
-    }
-
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec)
     {
@@ -257,22 +239,284 @@ public class AndroidTag extends View implements View.OnTouchListener{
                 currentBackgroundColor = tagBackgroundColor;
                 currentBorderColor = tagBorderColor;
                 currentBorderWidth = tagBorderWidth;
-                int[] location = new int[2];
-                this.getLocationOnScreen(location);
-                if (event.getX() >= 0 && event.getX() <= this.getMeasuredWidth()
-                        && event.getY() >= 0 && event.getY() <= this.getMeasuredHeight()) {
-                    tagIsSelected = !tagIsSelected;
-                }
-                if (tagIsSelected) {
-                    currentTitleString = tagSelectedTitleText;
-                    currentTitleColor = tagSelectedTitleColor;
-                    currentBackgroundColor = tagSelectedBackgroundColor;
-                    currentBorderColor = tagSelectedBorderColor;
-                    currentBorderWidth = tagSelectedBorderWidth;
+                if (tagType == 1) {
+                    int[] location = new int[2];
+                    this.getLocationOnScreen(location);
+                    if (event.getX() >= 0 && event.getX() <= this.getMeasuredWidth()
+                            && event.getY() >= 0 && event.getY() <= this.getMeasuredHeight()) {
+                        tagIsSelected = !tagIsSelected;
+                    }
+                    if (tagIsSelected) {
+                        currentTitleString = tagSelectedTitleText;
+                        currentTitleColor = tagSelectedTitleColor;
+                        currentBackgroundColor = tagSelectedBackgroundColor;
+                        currentBorderColor = tagSelectedBorderColor;
+                        currentBorderWidth = tagSelectedBorderWidth;
+                    }
                 }
                 break;
         }
         postInvalidate();
         return false;
+    }
+
+    public void reload() {
+        postInvalidate();
+    }
+
+    public Boolean isTagSelected() {
+        return tagIsSelected;
+    }
+
+    public void setTagSelected(Boolean selected) {
+        tagIsSelected = selected;
+    }
+
+    public String getTagTitleText() {
+        return tagTitleText;
+    }
+
+    public void setTagTitleText(String tagTitleText) {
+        this.tagTitleText = tagTitleText;
+    }
+
+    public int getTagTitleTextSize() {
+        return tagTitleTextSize;
+    }
+
+    public void setTagTitleTextSize(int tagTitleTextSize) {
+        this.tagTitleTextSize = tagTitleTextSize;
+    }
+
+    public int getTagTitleColor() {
+        return tagTitleColor;
+    }
+
+    public void setTagTitleColor(int tagTitleColor) {
+        this.tagTitleColor = tagTitleColor;
+    }
+
+    public int getTagBackgroundColor() {
+        return tagBackgroundColor;
+    }
+
+    public void setTagBackgroundColor(int tagBackgroundColor) {
+        this.tagBackgroundColor = tagBackgroundColor;
+    }
+
+    public int getTagBorderWidth() {
+        return tagBorderWidth;
+    }
+
+    public void setTagBorderWidth(int tagBorderWidth) {
+        this.tagBorderWidth = tagBorderWidth;
+    }
+
+    public int getTagBorderColor() {
+        return tagBorderColor;
+    }
+
+    public void setTagBorderColor(int tagBorderColor) {
+        this.tagBorderColor = tagBorderColor;
+    }
+
+    public int getTagBorderPaddingTop() {
+        return tagBorderPaddingTop;
+    }
+
+    public void setTagBorderPaddingTop(int tagBorderPaddingTop) {
+        this.tagBorderPaddingTop = tagBorderPaddingTop;
+    }
+
+    public int getTagBorderPaddingLeft() {
+        return tagBorderPaddingLeft;
+    }
+
+    public void setTagBorderPaddingLeft(int tagBorderPaddingLeft) {
+        this.tagBorderPaddingLeft = tagBorderPaddingLeft;
+    }
+
+    public int getTagBorderPaddingBottom() {
+        return tagBorderPaddingBottom;
+    }
+
+    public void setTagBorderPaddingBottom(int tagBorderPaddingBottom) {
+        this.tagBorderPaddingBottom = tagBorderPaddingBottom;
+    }
+
+    public int getTagBorderPaddingRight() {
+        return tagBorderPaddingRight;
+    }
+
+    public void setTagBorderPaddingRight(int tagBorderPaddingRight) {
+        this.tagBorderPaddingRight = tagBorderPaddingRight;
+    }
+
+    public int getTagBorderRadius() {
+        return tagBorderRadius;
+    }
+
+    public void setTagBorderRadius(int tagBorderRadius) {
+        this.tagBorderRadius = tagBorderRadius;
+    }
+
+    public int getTagBorderType() {
+        return tagBorderType;
+    }
+
+    public void setTagBorderType(int tagBorderType) {
+        this.tagBorderType = tagBorderType;
+    }
+
+    public String getTagOnClickTitleText() {
+        return tagOnClickTitleText;
+    }
+
+    public void setTagOnClickTitleText(String tagOnClickTitleText) {
+        this.tagOnClickTitleText = tagOnClickTitleText;
+    }
+
+    public int getTagOnClickTitleColor() {
+        return tagOnClickTitleColor;
+    }
+
+    public void setTagOnClickTitleColor(int tagOnClickTitleColor) {
+        this.tagOnClickTitleColor = tagOnClickTitleColor;
+    }
+
+    public int getTagOnClickBackgroundColor() {
+        return tagOnClickBackgroundColor;
+    }
+
+    public void setTagOnClickBackgroundColor(int tagOnClickBackgroundColor) {
+        this.tagOnClickBackgroundColor = tagOnClickBackgroundColor;
+    }
+
+    public int getTagOnClickBorderWidth() {
+        return tagOnClickBorderWidth;
+    }
+
+    public void setTagOnClickBorderWidth(int tagOnClickBorderWidth) {
+        this.tagOnClickBorderWidth = tagOnClickBorderWidth;
+    }
+
+    public int getTagOnClickBorderColor() {
+        return tagOnClickBorderColor;
+    }
+
+    public void setTagOnClickBorderColor(int tagOnClickBorderColor) {
+        this.tagOnClickBorderColor = tagOnClickBorderColor;
+    }
+
+    public String getTagSelectedTitleText() {
+        return tagSelectedTitleText;
+    }
+
+    public void setTagSelectedTitleText(String tagSelectedTitleText) {
+        this.tagSelectedTitleText = tagSelectedTitleText;
+    }
+
+    public int getTagSelectedTitleColor() {
+        return tagSelectedTitleColor;
+    }
+
+    public void setTagSelectedTitleColor(int tagSelectedTitleColor) {
+        this.tagSelectedTitleColor = tagSelectedTitleColor;
+    }
+
+    public int getTagSelectedBackgroundColor() {
+        return tagSelectedBackgroundColor;
+    }
+
+    public void setTagSelectedBackgroundColor(int tagSelectedBackgroundColor) {
+        this.tagSelectedBackgroundColor = tagSelectedBackgroundColor;
+    }
+
+    public int getTagSelectedBorderWidth() {
+        return tagSelectedBorderWidth;
+    }
+
+    public void setTagSelectedBorderWidth(int tagSelectedBorderWidth) {
+        this.tagSelectedBorderWidth = tagSelectedBorderWidth;
+    }
+
+    public int getTagSelectedBorderColor() {
+        return tagSelectedBorderColor;
+    }
+
+    public void setTagSelectedBorderColor(int tagSelectedBorderColor) {
+        this.tagSelectedBorderColor = tagSelectedBorderColor;
+    }
+
+    public boolean isTagIsSelected() {
+        return tagIsSelected;
+    }
+
+    public void setTagIsSelected(boolean tagIsSelected) {
+        this.tagIsSelected = tagIsSelected;
+    }
+
+    public int getTagType() {
+        return tagType;
+    }
+
+    public void setTagType(int tagType) {
+        this.tagType = tagType;
+    }
+
+    public String getCurrentTitleString() {
+        return currentTitleString;
+    }
+
+    public void setCurrentTitleString(String currentTitleString) {
+        this.currentTitleString = currentTitleString;
+    }
+
+    public int getCurrentTitleColor() {
+        return currentTitleColor;
+    }
+
+    public void setCurrentTitleColor(int currentTitleColor) {
+        this.currentTitleColor = currentTitleColor;
+    }
+
+    public int getCurrentBorderColor() {
+        return currentBorderColor;
+    }
+
+    public void setCurrentBorderColor(int currentBorderColor) {
+        this.currentBorderColor = currentBorderColor;
+    }
+
+    public int getCurrentBorderWidth() {
+        return currentBorderWidth;
+    }
+
+    public void setCurrentBorderWidth(int currentBorderWidth) {
+        this.currentBorderWidth = currentBorderWidth;
+    }
+
+    public int getCurrentBackgroundColor() {
+        return currentBackgroundColor;
+    }
+
+    public void setCurrentBackgroundColor(int currentBackgroundColor) {
+        this.currentBackgroundColor = currentBackgroundColor;
+    }
+
+    public Rect getmBound() {
+        return mBound;
+    }
+
+    public void setmBound(Rect mBound) {
+        this.mBound = mBound;
+    }
+
+    public Paint getmPaint() {
+        return mPaint;
+    }
+
+    public void setmPaint(Paint mPaint) {
+        this.mPaint = mPaint;
     }
 }
