@@ -1,6 +1,4 @@
 # AndroidTag
-AndroidTag
-
 [![Bless](https://cdn.rawgit.com/LunaGao/BlessYourCodeTag/master/tags/ramen.svg)](http://lunagao.github.io/BlessYourCodeTag/)
 
 # 效果图
@@ -11,7 +9,7 @@ AndroidTag
 # 如何引入
 ## Gradle
 ```
-compile 'com.luna.gao.androidtag_core:androidtag-core:0.1
+compile 'com.luna.gao.androidtag_core:androidtag-core:0.1'
 ```
 ## Maven
 ```
