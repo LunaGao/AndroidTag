@@ -1,5 +1,6 @@
 # AndroidTag
 [![Bless](https://cdn.rawgit.com/LunaGao/BlessYourCodeTag/master/tags/ramen.svg)](http://lunagao.github.io/BlessYourCodeTag/)
+[![Build Status](https://travis-ci.org/LunaGao/AndroidTag.svg?branch=master)](https://travis-ci.org/LunaGao/AndroidTag)
 
 # 效果图
 ![1](/Image/1.png)
