@@ -68,4 +68,4 @@ xmlns:tag="http://schemas.android.com/apk/res-auto"
 
 
 # Demo
-本项目中含有Demo，下载变异即可运行，其中包含从xml中使用和从代码中创建两种方式。
+本项目中含有Demo，其中包含从xml中使用和从代码中创建两种方式。
