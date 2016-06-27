@@ -9,14 +9,14 @@
 # 如何引入
 ## Gradle
 ```
-compile 'com.luna.gao.androidtag_core:androidtag-core:0.2'
+compile 'com.luna.gao.androidtag_core:androidtag-core:0.3'
 ```
 ## Maven
 ```
 <dependency>
   <groupId>com.luna.gao.androidtag_core</groupId>
   <artifactId>androidtag-core</artifactId>
-  <version>0.2</version>
+  <version>0.3</version>
   <type>pom</type>
 </dependency>
 ```
@@ -65,3 +65,7 @@ xmlns:tag="http://schemas.android.com/apk/res-auto"
 * **tagSelectedBorderColor** _color_ tag在选中时的边框颜色
 * **tagIsSelected** _boolean_ tag是否选中
 * **tagType** _enum_ tag可以被选择`selected`，若不可选择则为`normal`
+
+
+# Demo
+本项目中含有Demo，下载变异即可运行，其中包含从xml中使用和从代码中创建两种方式。
