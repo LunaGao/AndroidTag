@@ -47,6 +47,16 @@ public class AndroidTag extends View implements View.OnTouchListener{
     private int currentBorderWidth;
     private int currentBackgroundColor;
 
+    public static class BorderType {
+        public static int Round = 0;
+        public static int Square = 1;
+    }
+
+    public static class TagType {
+        public static int Normal = 0;
+        public static int Selected = 1;
+    }
+
     /**
      * 绘制时控制文本绘制的范围
      */
@@ -110,10 +120,10 @@ public class AndroidTag extends View implements View.OnTouchListener{
         /**
          * 获得绘制文本的宽和高
          */
-        mPaint = new Paint();
+        mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mBound = new Rect();
 
-        currentTitleString = tagTitleText;
+        textSet(false);
         currentTitleColor = tagTitleColor;
         currentBackgroundColor = tagBackgroundColor;
         currentBorderColor = tagBorderColor;
@@ -123,9 +133,21 @@ public class AndroidTag extends View implements View.OnTouchListener{
         if (tagBorderType == 1) {
             tagBorderRadius = 0;
         }
+
+        // 设置点击事件
+        this.setOnTouchListener(this);
+    }
+
+    private void textSet(Boolean changeToTitleText) {
+        if (changeToTitleText) {
+            currentTitleString = tagTitleText;
+        }
+        currentTitleString = currentTitleString == null ? tagTitleText : currentTitleString;
+        if (currentTitleString == null) {
+            currentTitleString = " ";
+        }
         // 设置是否为选中状态
         if (tagIsSelected) {
-            currentTitleString = tagTitleText;
             currentTitleString = tagSelectedTitleText == null ? tagTitleText : tagSelectedTitleText;
         }
         if (tagOnClickTitleText == null) {
@@ -134,8 +156,6 @@ public class AndroidTag extends View implements View.OnTouchListener{
         if (tagSelectedTitleText == null) {
             tagSelectedTitleText = currentTitleString;
         }
-        // 设置点击事件
-        this.setOnTouchListener(this);
     }
 
     @Override
@@ -155,7 +175,7 @@ public class AndroidTag extends View implements View.OnTouchListener{
             mPaint.setTextSize(tagTitleTextSize);
             mPaint.getTextBounds(currentTitleString, 0, currentTitleString.length(), mBound);
             float textWidth = mBound.width();
-            int desired = (int) (getPaddingLeft() + textWidth + getPaddingRight() + 2 + tagBorderPaddingRight + tagBorderPaddingLeft);
+            int desired = (int) (getPaddingLeft() + textWidth + getPaddingRight() + 2 + tagBorderPaddingRight + tagBorderPaddingLeft + currentBorderWidth * 2);
             width = desired;
         }
 
@@ -167,7 +187,7 @@ public class AndroidTag extends View implements View.OnTouchListener{
             mPaint.setTextSize(tagTitleTextSize);
             mPaint.getTextBounds(currentTitleString, 0, currentTitleString.length(), mBound);
             float textHeight = mBound.height();
-            int desired = (int) (getPaddingTop() + textHeight + getPaddingBottom() + 2 + tagBorderPaddingTop + tagBorderPaddingBottom);
+            int desired = (int) (getPaddingTop() + textHeight + getPaddingBottom() + 2 + tagBorderPaddingTop + tagBorderPaddingBottom + currentBorderWidth * 2);
             height = desired;
         }
 
@@ -178,7 +198,6 @@ public class AndroidTag extends View implements View.OnTouchListener{
     protected void onDraw(Canvas canvas)
     {
         super.onDraw(canvas);
-        mPaint.setAntiAlias(true);
         /**
          * 获得绘制文本的宽和高
          */
@@ -203,22 +222,24 @@ public class AndroidTag extends View implements View.OnTouchListener{
 
     private void setTitle(Canvas canvas) {
         mPaint.reset();
+        mPaint.setAntiAlias(true);
         mPaint.setTextSize(tagTitleTextSize);
         mPaint.setStyle(Paint.Style.FILL);
         mPaint.setColor(currentTitleColor);
-        canvas.drawText(currentTitleString, tagBorderPaddingLeft, tagBorderPaddingTop + mBound.height(), mPaint);
+        canvas.drawText(currentTitleString, tagBorderPaddingLeft + currentBorderWidth, tagBorderPaddingTop + mBound.height() + currentBorderWidth, mPaint);
     }
 
     private void drawBackgroundRoundRect(Paint.Style style, Canvas canvas, int color) {
         mPaint.reset();
+        mPaint.setAntiAlias(true);
         mPaint.setColor(color);
         mPaint.setStrokeWidth(currentBorderWidth);
         mPaint.setStyle(style);
         RectF rectF = new RectF();
-        rectF.left = 1;
-        rectF.right = 1 + mBound.width() + tagBorderPaddingRight + tagBorderPaddingLeft;
-        rectF.top = 1 ;
-        rectF.bottom = 1 + mBound.height() + tagBorderPaddingTop + tagBorderPaddingBottom;
+        rectF.left = 1 + currentBorderWidth;
+        rectF.right = 1 + mBound.width() + tagBorderPaddingRight + tagBorderPaddingLeft + currentBorderWidth * 2;
+        rectF.top = 1 + currentBorderWidth;
+        rectF.bottom = 1 + mBound.height() + tagBorderPaddingTop + tagBorderPaddingBottom + currentBorderWidth * 2;
         canvas.drawRoundRect(rectF, tagBorderRadius, tagBorderRadius, mPaint);
     }
 
@@ -256,12 +277,36 @@ public class AndroidTag extends View implements View.OnTouchListener{
                 }
                 break;
         }
-        postInvalidate();
+        reload();
         return false;
     }
 
     public void reload() {
-        postInvalidate();
+        currentTitleString = currentTitleString == null ? tagTitleText : currentTitleString;
+        if (currentTitleString == null) {
+            currentTitleString = " ";
+        }
+        currentTitleColor = tagTitleColor;
+        currentBackgroundColor = tagBackgroundColor;
+        currentBorderColor = tagBorderColor;
+        currentBorderWidth = tagBorderWidth;
+
+        // 设置圆角或直角
+        if (tagBorderType == 1) {
+            tagBorderRadius = 0;
+        }
+        // 设置是否为选中状态
+        if (tagIsSelected) {
+            currentTitleString = tagSelectedTitleText == null ? tagTitleText : tagSelectedTitleText;
+        }
+        if (tagOnClickTitleText == null) {
+            tagOnClickTitleText = currentTitleString;
+        }
+        if (tagSelectedTitleText == null) {
+            tagSelectedTitleText = currentTitleString;
+        }
+        requestLayout();
+        invalidate();
     }
 
     public Boolean isTagSelected() {
@@ -278,6 +323,8 @@ public class AndroidTag extends View implements View.OnTouchListener{
 
     public void setTagTitleText(String tagTitleText) {
         this.tagTitleText = tagTitleText;
+        textSet(true);
+        reload();
     }
 
     public int getTagTitleTextSize() {
@@ -374,6 +421,8 @@ public class AndroidTag extends View implements View.OnTouchListener{
 
     public void setTagOnClickTitleText(String tagOnClickTitleText) {
         this.tagOnClickTitleText = tagOnClickTitleText;
+        textSet(true);
+        reload();
     }
 
     public int getTagOnClickTitleColor() {
@@ -414,6 +463,8 @@ public class AndroidTag extends View implements View.OnTouchListener{
 
     public void setTagSelectedTitleText(String tagSelectedTitleText) {
         this.tagSelectedTitleText = tagSelectedTitleText;
+        textSet(true);
+        reload();
     }
 
     public int getTagSelectedTitleColor() {
@@ -462,46 +513,6 @@ public class AndroidTag extends View implements View.OnTouchListener{
 
     public void setTagType(int tagType) {
         this.tagType = tagType;
-    }
-
-    public String getCurrentTitleString() {
-        return currentTitleString;
-    }
-
-    public void setCurrentTitleString(String currentTitleString) {
-        this.currentTitleString = currentTitleString;
-    }
-
-    public int getCurrentTitleColor() {
-        return currentTitleColor;
-    }
-
-    public void setCurrentTitleColor(int currentTitleColor) {
-        this.currentTitleColor = currentTitleColor;
-    }
-
-    public int getCurrentBorderColor() {
-        return currentBorderColor;
-    }
-
-    public void setCurrentBorderColor(int currentBorderColor) {
-        this.currentBorderColor = currentBorderColor;
-    }
-
-    public int getCurrentBorderWidth() {
-        return currentBorderWidth;
-    }
-
-    public void setCurrentBorderWidth(int currentBorderWidth) {
-        this.currentBorderWidth = currentBorderWidth;
-    }
-
-    public int getCurrentBackgroundColor() {
-        return currentBackgroundColor;
-    }
-
-    public void setCurrentBackgroundColor(int currentBackgroundColor) {
-        this.currentBackgroundColor = currentBackgroundColor;
     }
 
     public Rect getmBound() {

@@ -11,6 +11,7 @@
     tools:context="com.luna.gao.androidtag.MainActivity">
 
     <com.google.android.flexbox.FlexboxLayout
+        android:id="@+id/flexbox1"
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
@@ -24,39 +25,33 @@
             android:layout_height="wrap_content"
             tag:tagBorderType="round"
             tag:tagType="selected"
-            tag:tagTitleText="坑爹啊"
+            tag:tagTitleText="这个是由"
+            tag:tagSelectedTitleText="adlajlfajsd;lfja;lsdfja;lsjfd"
             tag:tagBorderColor="#000000"
             tag:tagTitleTextSize="13sp" />
 
         <com.luna.gao.androidtag_core.AndroidTag
+            android:id="@+id/tag_2"
             android:padding="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tag:tagBorderType="round"
             tag:tagType="selected"
-            tag:tagTitleText="坑"
+            tag:tagTitleText="xml创建的"
             tag:tagBorderColor="#000000"
             tag:tagTitleTextSize="13sp" />
 
-        <com.luna.gao.androidtag_core.AndroidTag
-            android:padding="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tag:tagBorderType="round"
-            tag:tagType="selected"
-            tag:tagTitleText="坑爹啊1111"
-            tag:tagBorderColor="#000000"
-            tag:tagTitleTextSize="13sp" />
+    </com.google.android.flexbox.FlexboxLayout>
 
-        <com.luna.gao.androidtag_core.AndroidTag
-            android:padding="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tag:tagBorderType="round"
-            tag:tagType="selected"
-            tag:tagTitleText="坑爹啊1212121212"
-            tag:tagBorderColor="#000000"
-            tag:tagTitleTextSize="13sp" />
+    <com.google.android.flexbox.FlexboxLayout
+        android:id="@+id/flexbox"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:flexWrap="wrap"
+        android:layout_below="@+id/flexbox1"
+        android:layout_alignParentStart="true">
 
     </com.google.android.flexbox.FlexboxLayout>
 

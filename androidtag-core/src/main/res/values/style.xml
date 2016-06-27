@@ -4,7 +4,6 @@
     <style name="AndroidTag">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="tagTitleText">@string/default_title</item>
         <item name="tagTitleTextSize">@dimen/titleTextSize</item>
         <item name="tagTitleColor">@color/titleColor</item>
         <item name="tagBorderPaddingTop">@dimen/borderPaddingTop</item>
