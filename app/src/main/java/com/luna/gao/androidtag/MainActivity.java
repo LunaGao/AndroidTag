@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        tag.setTagTitleText("hello");
+        tag.setTagTitleText("create by code");
         tag.setTagOnClickTitleText("click");
         tag.setTagSelectedTitleText("selected");
         flexbox.addView(tag);

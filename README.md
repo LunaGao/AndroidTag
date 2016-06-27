@@ -3,20 +3,18 @@
 
 # 效果图
 ![1](/Image/1.png)
-![2](/Image/2.png)
-![3](/Image/3.png)
 
 # 如何引入
 ## Gradle
 ```
-compile 'com.luna.gao.androidtag_core:androidtag-core:0.3'
+compile 'com.luna.gao.androidtag_core:androidtag-core:0.4'
 ```
 ## Maven
 ```
 <dependency>
   <groupId>com.luna.gao.androidtag_core</groupId>
   <artifactId>androidtag-core</artifactId>
-  <version>0.3</version>
+  <version>0.4</version>
   <type>pom</type>
 </dependency>
 ```

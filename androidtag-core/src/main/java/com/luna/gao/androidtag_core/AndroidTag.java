@@ -286,10 +286,6 @@ public class AndroidTag extends View implements View.OnTouchListener{
         if (currentTitleString == null) {
             currentTitleString = " ";
         }
-        currentTitleColor = tagTitleColor;
-        currentBackgroundColor = tagBackgroundColor;
-        currentBorderColor = tagBorderColor;
-        currentBorderWidth = tagBorderWidth;
 
         // 设置圆角或直角
         if (tagBorderType == 1) {

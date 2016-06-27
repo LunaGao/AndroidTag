@@ -26,7 +26,9 @@
             tag:tagBorderType="round"
             tag:tagType="selected"
             tag:tagTitleText="这个是由"
-            tag:tagSelectedTitleText="adlajlfajsd;lfja;lsdfja;lsjfd"
+            tag:tagSelectedTitleText="点击了"
+            tag:tagSelectedBackgroundColor="#234589"
+            tag:tagSelectedTitleColor="#ffffff"
             tag:tagBorderColor="#000000"
             tag:tagTitleTextSize="13sp" />
 
