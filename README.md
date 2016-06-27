@@ -41,30 +41,30 @@ xmlns:tag="http://schemas.android.com/apk/res-auto"
 ```
 
 # 进阶
-* **tagTitleText** _string_ tag的标题
-* **tagTitleTextSize** _dimension_ tag字体大小
-* **tagTitleColor** _color_ tag字体颜色
-* **tagBorderRadius** _dimension_ tag边框圆角弧度
-* **tagBorderPaddingTop** _dimension_ tag边框顶部距离文字的距离
-* **tagBorderPaddingLeft** _dimension_ tag边框右边距离文字的距离
-* **tagBorderPaddingBottom** _dimension_ tag边框底部距离文字的距离
-* **tagBorderPaddingRight** _dimension_ tag边框左边距离文字的距离
-* **tagBackgroundColor** _color_ tag背景色
-* **tagBorderWidth** _dimension_ tag边框线条宽度
-* **tagBorderColor** _color_ tag边框颜色
-* **tagBorderType** _enum_ tag边框类型，`round`为圆角、 `square`为直角
-* **tagOnClickTitleText** _string_ tag在点击时的标题文字，不设置时与tagTitleText相同
-* **tagOnClickTitleColor** _color_ tag在点击时的标题颜色
-* **tagOnClickBackgroundColor** _color_ tag在点击时的背景颜色
-* **tagOnClickBorderWidth** _dimension_ tag在点击时的边框线条宽度
-* **tagOnClickBorderColor** _color_ tag在点击时的颜色
-* **tagSelectedTitleText** _string_ tag在选中时的标题文字，不设置时与tagTitleText相同
-* **tagSelectedTitleColor** _color_ tag在选中时的标题颜色
-* **tagSelectedBackgroundColor** _color_ tag在选中时的背景颜色
-* **tagSelectedBorderWidth** _dimension_ tag在选中时的边框线条宽度
-* **tagSelectedBorderColor** _color_ tag在选中时的边框颜色
-* **tagIsSelected** _boolean_ tag是否选中
-* **tagType** _enum_ tag可以被选择`selected`，若不可选择则为`normal`
+* **`tagTitleText`** _string_ tag的标题
+* **`tagTitleTextSize`** _dimension_ tag字体大小
+* **`tagTitleColor`** _color_ tag字体颜色
+* **`tagBorderRadius`** _dimension_ tag边框圆角弧度
+* **`tagBorderPaddingTop`** _dimension_ tag边框顶部距离文字的距离
+* **`tagBorderPaddingLeft`** _dimension_ tag边框右边距离文字的距离
+* **`tagBorderPaddingBottom`** _dimension_ tag边框底部距离文字的距离
+* **`tagBorderPaddingRight`** _dimension_ tag边框左边距离文字的距离
+* **`tagBackgroundColor`** _color_ tag背景色
+* **`tagBorderWidth`** _dimension_ tag边框线条宽度
+* **`tagBorderColor`** _color_ tag边框颜色
+* **`tagBorderType`** _enum_ tag边框类型，`round`为圆角、 `square`为直角
+* **`tagOnClickTitleText`** _string_ tag在点击时的标题文字，不设置时与tagTitleText相同
+* **`tagOnClickTitleColor`** _color_ tag在点击时的标题颜色
+* **`tagOnClickBackgroundColor`** _color_ tag在点击时的背景颜色
+* **`tagOnClickBorderWidth`** _dimension_ tag在点击时的边框线条宽度
+* **`tagOnClickBorderColor`** _color_ tag在点击时的颜色
+* **`tagSelectedTitleText`** _string_ tag在选中时的标题文字，不设置时与tagTitleText相同
+* **`tagSelectedTitleColor`** _color_ tag在选中时的标题颜色
+* **`tagSelectedBackgroundColor`** _color_ tag在选中时的背景颜色
+* **`tagSelectedBorderWidth`** _dimension_ tag在选中时的边框线条宽度
+* **`tagSelectedBorderColor`** _color_ tag在选中时的边框颜色
+* **`tagIsSelected`** _boolean_ tag是否选中
+* **`tagType`** _enum_ tag可以被选择`selected`，若不可选择则为`normal`
 
 
 # Demo
