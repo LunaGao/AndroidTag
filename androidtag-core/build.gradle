@@ -2,11 +2,6 @@ apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
 
-version = "0.4"
-
-// 根节点添加
-group = "com.luna.gao.androidtag_core"
-
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.3"
@@ -30,6 +25,13 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.4.0'
 }
+
+/*
+
+version = "0.4"
+
+// 根节点添加
+group = "com.luna.gao.androidtag_core"
 
 // 根节点添加
 def siteUrl = 'http://lunagao.github.io/'    // project homepage
@@ -102,3 +104,5 @@ bintray {
         publish = true
     }
 }
+
+*/
