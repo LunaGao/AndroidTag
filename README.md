@@ -9,14 +9,14 @@
 # 如何引入
 ## Gradle
 ```
-compile 'com.luna.gao.androidtag_core:androidtag-core:0.4'
+compile 'com.luna.gao.androidtag_core:androidtag-core:0.5'
 ```
 ## Maven
 ```
 <dependency>
   <groupId>com.luna.gao.androidtag_core</groupId>
   <artifactId>androidtag-core</artifactId>
-  <version>0.4</version>
+  <version>0.5</version>
   <type>pom</type>
 </dependency>
 ```

@@ -294,6 +294,16 @@ public class AndroidTag extends View implements View.OnTouchListener{
         // 设置是否为选中状态
         if (tagIsSelected) {
             currentTitleString = tagSelectedTitleText == null ? tagTitleText : tagSelectedTitleText;
+            currentTitleColor = tagSelectedTitleColor;
+            currentBackgroundColor = tagSelectedBackgroundColor;
+            currentBorderColor = tagSelectedBorderColor;
+            currentBorderWidth = tagSelectedBorderWidth;
+        } else {
+            currentTitleString = tagTitleText;
+            currentTitleColor = tagTitleColor;
+            currentBackgroundColor = tagBackgroundColor;
+            currentBorderColor = tagBorderColor;
+            currentBorderWidth = tagBorderWidth;
         }
         if (tagOnClickTitleText == null) {
             tagOnClickTitleText = currentTitleString;

@@ -32,9 +32,23 @@ public class MainActivity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        tag.setTagTitleText("create by code");
-        tag.setTagOnClickTitleText("click");
-        tag.setTagSelectedTitleText("selected");
+        //默认颜色和背景
+        tag.setTagTitleText("create by code default");
+        tag.setTagBorderColor(this.getResources().getColor(R.color.main_blue));
+        tag.setTagBorderWidth(1);
+        tag.setTagTitleColor(this.getResources().getColor(R.color.text_gray));
+
+
+        //选中后颜色和背景
+        tag.setTagSelectedTitleText("create by code selected");
+        tag.setTagSelectedBackgroundColor(this.getResources().getColor(R.color.main_blue));
+        tag.setTagSelectedTitleColor(this.getResources().getColor(R.color.main_white));
+
+        //点击颜色和背景
+        tag.setTagOnClickTitleText("create by code click");
+        tag.setTagOnClickBackgroundColor(this.getResources().getColor(R.color.text_gray));
+        tag.setTagOnClickTitleColor(this.getResources().getColor(R.color.main_blue));
+
         flexbox.addView(tag);
     }
 }
