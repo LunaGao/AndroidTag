@@ -39,6 +39,7 @@ public class AndroidTag extends View implements View.OnTouchListener{
     private int tagSelectedBorderWidth;
     private int tagSelectedBorderColor;
     private boolean tagIsSelected;
+    private boolean tagIsOnclicked;
     private int tagType;
 
     private String currentTitleString;
@@ -83,6 +84,7 @@ public class AndroidTag extends View implements View.OnTouchListener{
     public AndroidTag(Context context, AttributeSet attrs, int defStyle)
     {
         super(context, attrs, defStyle);
+        tagIsOnclicked = false;
         /**
          * 获得我们所定义的自定义样式属性
          */
@@ -248,31 +250,16 @@ public class AndroidTag extends View implements View.OnTouchListener{
         final int action = MotionEventCompat.getActionMasked(event);
         switch (action) {
             case MotionEvent.ACTION_DOWN:
-                currentTitleString = tagOnClickTitleText;
-                currentTitleColor = tagOnClickTitleColor;
-                currentBackgroundColor = tagOnClickBackgroundColor;
-                currentBorderColor = tagOnClickBorderColor;
-                currentBorderWidth = tagOnClickBorderWidth;
+                tagIsOnclicked = true;
                 break;
             case MotionEvent.ACTION_UP:
-                currentTitleString = tagTitleText;
-                currentTitleColor = tagTitleColor;
-                currentBackgroundColor = tagBackgroundColor;
-                currentBorderColor = tagBorderColor;
-                currentBorderWidth = tagBorderWidth;
+                tagIsOnclicked = false;
                 if (tagType == 1) {
                     int[] location = new int[2];
                     this.getLocationOnScreen(location);
                     if (event.getX() >= 0 && event.getX() <= this.getMeasuredWidth()
                             && event.getY() >= 0 && event.getY() <= this.getMeasuredHeight()) {
                         tagIsSelected = !tagIsSelected;
-                    }
-                    if (tagIsSelected) {
-                        currentTitleString = tagSelectedTitleText;
-                        currentTitleColor = tagSelectedTitleColor;
-                        currentBackgroundColor = tagSelectedBackgroundColor;
-                        currentBorderColor = tagSelectedBorderColor;
-                        currentBorderWidth = tagSelectedBorderWidth;
                     }
                 }
                 break;
@@ -292,18 +279,26 @@ public class AndroidTag extends View implements View.OnTouchListener{
             tagBorderRadius = 0;
         }
         // 设置是否为选中状态
-        if (tagIsSelected) {
-            currentTitleString = tagSelectedTitleText == null ? tagTitleText : tagSelectedTitleText;
-            currentTitleColor = tagSelectedTitleColor;
-            currentBackgroundColor = tagSelectedBackgroundColor;
-            currentBorderColor = tagSelectedBorderColor;
-            currentBorderWidth = tagSelectedBorderWidth;
+        if (tagIsOnclicked) {
+            currentTitleString = tagOnClickTitleText;
+            currentTitleColor = tagOnClickTitleColor;
+            currentBackgroundColor = tagOnClickBackgroundColor;
+            currentBorderColor = tagOnClickBorderColor;
+            currentBorderWidth = tagOnClickBorderWidth;
         } else {
-            currentTitleString = tagTitleText;
-            currentTitleColor = tagTitleColor;
-            currentBackgroundColor = tagBackgroundColor;
-            currentBorderColor = tagBorderColor;
-            currentBorderWidth = tagBorderWidth;
+            if (tagIsSelected) {
+                currentTitleString = tagSelectedTitleText == null ? tagTitleText : tagSelectedTitleText;
+                currentTitleColor = tagSelectedTitleColor;
+                currentBackgroundColor = tagSelectedBackgroundColor;
+                currentBorderColor = tagSelectedBorderColor;
+                currentBorderWidth = tagSelectedBorderWidth;
+            } else {
+                currentTitleString = tagTitleText;
+                currentTitleColor = tagTitleColor;
+                currentBackgroundColor = tagBackgroundColor;
+                currentBorderColor = tagBorderColor;
+                currentBorderWidth = tagBorderWidth;
+            }
         }
         if (tagOnClickTitleText == null) {
             tagOnClickTitleText = currentTitleString;
